@@ -28,13 +28,9 @@ public class DelimiterUtils {
 		return delimiters;
 	}
 
-	public boolean hasCustomDelimiter() {
-		return CUSTOM_DELIMITER_PATTERN.matcher(this.input).find();
-	}
-
 	public String getInputExceptCustomDelimiter() {
-		if (hasCustomDelimiter()) {
-			Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(this.input);
+		Matcher matcher = CUSTOM_DELIMITER_PATTERN.matcher(this.input);
+		if (matcher.find()) {
 			return matcher.group(2);
 		} else {
 			return this.input;
